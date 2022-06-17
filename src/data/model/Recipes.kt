@@ -8,6 +8,5 @@ data class Recipes(
     val recipeTitle:String,
     val cookingTime:String,
     val count:String,
-    val content:String,
-    val photo:ExposedBlob
+    val content:String
 )

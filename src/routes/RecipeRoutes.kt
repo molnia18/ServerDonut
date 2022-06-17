@@ -40,7 +40,7 @@ fun Route.RecipeRoutes(
 
         post<RecipeCreateRoute>{
 
-            val resipes = try {
+            val reсipes = try {
                 call.receive<Recipes>()
             }catch (e:Exception){
                 call.respond(HttpStatusCode.BadRequest,SimpleResponse(false,"Отсутствуют поля"))
@@ -49,7 +49,7 @@ fun Route.RecipeRoutes(
 
             try {
                 val email = call.principal<User>()!!.email
-                db.addResipes(resipes,email)
+                db.addReсipes(reсipes,email)
                 call.respond(HttpStatusCode.OK,SimpleResponse(true,"Ваш рецепт добавлен успешно!"))
             }catch (e:Exception){
                 call.respond(HttpStatusCode.Conflict,SimpleResponse(false,e.message?:"Произошла какая-то ошибка"))
@@ -67,7 +67,7 @@ fun Route.RecipeRoutes(
         }
 
         post<RecipeUpdateRoute>{
-            val resipes = try {
+            val reсipes = try {
                 call.receive<Recipes>()
             }catch (e:Exception){
                 call.respond(HttpStatusCode.BadRequest,SimpleResponse(false,"Отсутствуют поля"))
@@ -76,7 +76,7 @@ fun Route.RecipeRoutes(
 
             try {
                 val email = call.principal<User>()!!.email
-                db.updateRecipes(resipes,email)
+                db.updateRecipes(reсipes,email)
                 call.respond(HttpStatusCode.OK,SimpleResponse(true,"Ваш рецепт изменен успешно!"))
             }catch (e:Exception){
                 call.respond(HttpStatusCode.Conflict,SimpleResponse(false,e.message?:"Произошла какая-то ошибка"))

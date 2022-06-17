@@ -9,7 +9,6 @@ object RecipesTable:Table() {
     val cookingTime = text("cookingTime")
     val count = text("count")
     val content = text("content")
-    val photo = blob("photo")
 
 
     override val primaryKey: PrimaryKey = PrimaryKey(id)

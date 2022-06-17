@@ -39,7 +39,7 @@ class Repo {
     }
 
 
-    suspend fun addResipes(recipes: Recipes,email: String){
+    suspend fun addReсipes(recipes: Recipes,email: String){
         dbQuery {
             RecipesTable.insert { rt->
                 rt[RecipesTable.id] = recipes.id
@@ -48,7 +48,6 @@ class Repo {
                 rt[RecipesTable.cookingTime] = recipes.cookingTime
                 rt[RecipesTable.count] = recipes.count
                 rt[RecipesTable.content] = recipes.content
-                rt[RecipesTable.photo] = recipes.photo
             }
         }
     }
@@ -74,7 +73,6 @@ class Repo {
                 rt[RecipesTable.cookingTime] = recipes.cookingTime
                 rt[RecipesTable.count] = recipes.count
                 rt[RecipesTable.content] = recipes.content
-                rt[RecipesTable.photo] = recipes.photo
             }
         }
     }
@@ -95,8 +93,8 @@ class Repo {
             recipeTitle = row[RecipesTable.recipeTitle],
             cookingTime = row[RecipesTable.cookingTime],
             count = row[RecipesTable.count],
-            content = row[RecipesTable.content],
-            photo = row[RecipesTable.photo]
+            content = row[RecipesTable.content]
+
         )
     }
 
