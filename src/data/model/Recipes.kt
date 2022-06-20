@@ -1,6 +1,5 @@
 package com.example.data.model
 
-import org.jetbrains.exposed.sql.statements.api.ExposedBlob
 
 
 data class Recipes(

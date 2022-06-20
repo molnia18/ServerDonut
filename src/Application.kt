@@ -16,6 +16,7 @@ import io.ktor.auth.jwt.*
 import io.ktor.gson.*
 import io.ktor.features.*
 import io.ktor.locations.*
+import io.ktor.request.*
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
@@ -65,6 +66,21 @@ fun Application.module(testing: Boolean = false) {
 
         UserRoutes(db,jwtService,hashFunction)
         RecipeRoutes(db,hashFunction)
+
+        route("/recipes"){
+
+            route("/create") {
+                post {
+                    val body = call.receive<String>()
+                    call.respond(body)
+                }
+            }
+
+            delete{
+                val body = call.receive<String>()
+                call.respond(body)
+            }
+        }
 
 
     }

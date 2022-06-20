@@ -83,16 +83,16 @@ fun Route.RecipeRoutes(
         }
 
         delete<RecipeDeleteRoute>{
-            val recipeid = try{
+            val recipeId = try{
                 call.request.queryParameters["id"]!!
             }catch (e:Exception){
-                call.respond(HttpStatusCode.BadRequest,SimpleResponse(false,""))
+                call.respond(HttpStatusCode.BadRequest,SimpleResponse(false,"QueryParameter:id is not present"))
                 return@delete
             }
 
             try {
                 val email = call.principal<User>()!!.email
-                db.deleteRecipes(recipeid,email)
+                db.deleteRecipes(recipeId,email)
                 call.respond(HttpStatusCode.OK,SimpleResponse(true,"Рецепт успешно удален"))
             }catch (e:Exception){
                 call.respond(HttpStatusCode.Conflict,SimpleResponse(false,e.message?:"Произошла какая-то ошибка"))
